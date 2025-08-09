@@ -34,11 +34,18 @@ exports.deleteTodo = (req, res) => {
 };
 
 exports.getTodoById = (req, res) => {
-    const todoId = parseInt(req.params.id);
+    const idParam = req.params.id;
+
+ 
+    if (!idParam || isNaN(idParam)) {
+        return res.status(400).json({ error: "Geçerli bir ID giriniz." });
+    }
+
+    const todoId = parseInt(idParam);
     const todo = todoModel.todos.find(t => t.id === todoId);
 
     if (!todo) {
-        return res.status(404).json({ error: "To-Do bulunamadı." });
+        return res.status(404).json({ error: "ID NOT FOUND ." });
     }
 
     res.status(200).json(todo);
