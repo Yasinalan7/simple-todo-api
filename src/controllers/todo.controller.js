@@ -32,3 +32,14 @@ exports.deleteTodo = (req, res) => {
 
     res.status(204).send();
 };
+
+exports.getTodoById = (req, res) => {
+    const todoId = parseInt(req.params.id);
+    const todo = todoModel.todos.find(t => t.id === todoId);
+
+    if (!todo) {
+        return res.status(404).json({ error: "To-Do bulunamadı." });
+    }
+
+    res.status(200).json(todo);
+};

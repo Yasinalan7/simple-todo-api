@@ -10,6 +10,7 @@ app.get('/', (req, res) => {
   res.send('Merhaba! To-Do API çalışıyor.');
 });
 
+app.get 
 
 app.listen(PORT, () => {
     console.log(`Sunucu http://localhost:${PORT} adresinde çalışıyor...`);
